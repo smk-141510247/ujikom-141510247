@@ -11,7 +11,7 @@
 
                     <div class="form-group">
                     <label>Kode Lembur</label>
-                    <input class="form-control" type="text" name="kode_lembur" placeholder="Kode Lembur ...">
+                    <input class="form-control" type="text" name="kode_lembur" placeholder="Kode Lembur">
                     </div>
       
                     <div class="control-group">

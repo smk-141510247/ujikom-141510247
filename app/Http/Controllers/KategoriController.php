@@ -95,6 +95,7 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        kategori_lembur::find($id)->delete();
+        return redirect('kategori');
     }
 }

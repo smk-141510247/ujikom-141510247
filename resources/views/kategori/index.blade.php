@@ -29,7 +29,11 @@
                         <td> {{$data->golongan->nama_golongan}}</td>
                         <td> Rp.{{$data->besaran_uang}}</td>
                         <td><a href="{{route('kategori.edit',$data->id)}}" class="btn btn-warning">Edit</a></td>
-                        <td><a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
+                        <td>
+                        {!! Form::open(['method' => 'DELETE', 'route'=>['kategori.destroy', $data->id]]) !!}
+                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                       </td>
                                    
                     
                     </tr>

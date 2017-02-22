@@ -11,8 +11,8 @@
                     {!! Form::model($kategori,['method' => 'PATCH','route'=>['kategori.update',$kategori->id]]) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('kode_kategori_lembur', 'Kode Kategori Lembur') !!}
-                    {!! Form::text('kode_kategori_lembur',null,['class'=>'form-control']) !!}
+                    {!! Form::label('kode_lembur', 'Kode Lembur') !!}
+                    {!! Form::text('kode_lembur',null,['class'=>'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('id_jabatan', 'Id Jabatan') !!}

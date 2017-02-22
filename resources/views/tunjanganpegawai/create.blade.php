@@ -4,14 +4,14 @@
 	
 <div class="container">
 	<div class="panel panel-primary">
-		<div class="panel-heading">Tambah Data Kategori Lembur</div>
+		<div class="panel-heading">Tambah Data Tunjangan Pegawai</div>
 		<div class="panel-body">
 			<form method="POST" action="{{url('tunjanganpegawai')}}">
 			 	{{csrf_field()}}
       
                     <div class="control-group">
                         <label class="control-label">Tunjangan</label>
-                        <div class="controls">
+                        <div class="control">
                             <select class="form-control" name="kode_tunjangan_id">
                                 @foreach ($tunjangan as $data)
                                 <option value="{{ $data->id }}">{{ $data->kode_tunjangan }}</option>

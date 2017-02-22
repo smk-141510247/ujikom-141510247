@@ -21,7 +21,7 @@ class pegawai extends Model
     }
     public function jabatan()
     {
-    	return $this->hasMany('App\jabatan','id_jabatan');
+    	return $this->BelongsTo('App\jabatan','id_jabatan');
     }
 
     public function tunjangan_pegawai()
