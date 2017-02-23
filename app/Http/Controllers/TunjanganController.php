@@ -16,7 +16,16 @@ class TunjanganController extends Controller
      */
     public function index()
     {
-        $tunjangan = tunjangan::all();
+        $tunjangan = tunjangan::with('jabatan','golongan')->get();
+        $tunjangan = tunjangan::where('kode_tunjangan', request('kode_tunjangan'))->paginate(0);
+        if(request()->has('kode_tunjangan'))
+        {
+            $tunjangan=tunjangan::where('kode_tunjangan', request('kode_tunjangan'))->paginate(0);
+        }
+        else
+        {
+            $tunjangan=tunjangan::paginate(3);
+        }
         return view ('tunjangan.index', compact('tunjangan'));
     }
 
@@ -66,7 +75,9 @@ class TunjanganController extends Controller
     public function edit($id)
     {
          $tunjangan=tunjangan::find($id);
-        return view('tunjangan.edit',compact('tunjangan'));
+         $jabatan = jabatan::all();
+         $golongan = golongan::all();
+        return view('tunjangan.edit',compact('tunjangan','jabatan','golongan'));
     }
 
     /**
@@ -78,10 +89,10 @@ class TunjanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $tunjanganUpdate=Request::all();
-         $tunjangan=tunjangan::find($id);
-         $tunjangan->update($tunjanganUpdate);
-         return redirect('tunjangan');
+        $dataUpdate=Request::all();
+        $tunjangan=tunjangan::find($id);
+        $tunjangan->update($dataUpdate);
+        return redirect('tunjangan');
     }
 
     /**

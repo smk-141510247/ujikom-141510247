@@ -12,7 +12,7 @@
                     <tr class="bg-primary">
                         <th>Id</th>
                         <th>Id Tunjangan Pegawai</th>
-                        <th>Jumlah Jam Lembur</th>
+                        <th>Jumlah Jam Lembur </th>
                         <th>Jumlah Uang Lembur</th>
                         <th>Gaji Pokok</th>
                         <th>Total Gaji</th>
@@ -29,16 +29,18 @@
                     <tr> 
                         <td> {{$id++}} </td>
                         <td> {{$data->tunjangan_pegawai_id}} </td>
-                        <td> {{$data->jumalah_jam_lembur}} </td>
+                        <td> {{$data->jumlah_jam_lembur }} </td>
                         <td> {{$data->jumlah_uang_lembur}} </td>
                         <td> {{$data->gaji_pokok}} </td>
                         <td> {{$data->total_gaji}} </td>
                         <td> {{$data->tanggal_pengembalian}} </td>
                         <td> {{$data->status_pengembalian}} </td>
                         <td> {{$data->petugas_penerima}} </td>
-                        
                         <td><a href="{{route('penggajian.edit',$data->id)}}" class="btn btn-warning">Edit</a></td>
-                        <td><a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
+                        {!! Form::open(['method' => 'DELETE', 'route'=>['penggajian.destroy', $data->id]]) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
+                        </td>
                          
                     </tr>
                 </tbody>

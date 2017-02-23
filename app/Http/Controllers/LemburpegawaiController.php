@@ -17,6 +17,15 @@ class LemburpegawaiController extends Controller
     public function index()
     {
         $lemburpegawai = lembur_pegawai::with('kategori_lembur','pegawai')->get();
+        $lemburpegawai = lembur_pegawai::where('kode_lembur_id', request('kode_lembur_id'))->paginate(0);
+        if(request()->has('kode_lembur_id'))
+        {
+            $lemburpegawai=lembur_pegawai::where('kode_lembur_id', request('kode_lembur_id'))->paginate(0);
+        }
+        else
+        {
+            $lemburpegawai=lembur_pegawai::paginate(3);
+        }
         return view('lemburpegawai.index', compact('lemburpegawai'));
     }
 
@@ -68,7 +77,7 @@ class LemburpegawaiController extends Controller
     public function edit($id)
     {
          $lemburpegawai=lembur_pegawai::find($id);
-        return view('lemburpegawai.edit',compact('lemburpegawai'));
+        return view('kategori.edit',compact('kategori'));
     }
 
     /**
@@ -80,10 +89,10 @@ class LemburpegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $lemburpegawaiUpdate=Request::all();
-         $lemburpegawai=lemburpegawai::find($id);
-         $lemburpegawai->update($lemburpegawaiUpdate);
-         return redirect('lemburpegawai');
+        $dataUpdate=Request::all();
+        $lembur_pegawai=lembur_pegawai::find($id);
+        $lembur_pegawai->update($dataUpdate);
+        return redirect('lemburpegawai');
     }
 
     /**
@@ -94,6 +103,7 @@ class LemburpegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        lembur_pegawai::find($id)->delete();
+        return redirect('lemburpegawai');
     }
 }

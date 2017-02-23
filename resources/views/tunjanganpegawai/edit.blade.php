@@ -6,7 +6,6 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Update</div>
-
                 <div class="panel-body">
                     {!! Form::model($tunjangan_pegawai,['method' => 'PATCH','route'=>['tunjanganpegawai.update',tunjanganpegawai->id]]) !!}
                 <div class="form-group">

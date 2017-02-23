@@ -7,6 +7,8 @@ use App\golongan;
 use App\pegawai;
 use App\kategori_lembur;
 use Form;
+use Validator;
+use Input;
 
 class GolonganController extends Controller
 {
@@ -18,6 +20,15 @@ class GolonganController extends Controller
     public function index()
     {
         $golongan = golongan::all();
+        $golongan = golongan::where('nama_golongan', request('nama_golongan'))->paginate(0);
+        if(request()->has('nama_golongan'))
+        {
+            $golongan=golongan::where('nama_golongan', request('nama_golongan'))->paginate(0);
+        }
+        else
+        {
+            $golongan=golongan::paginate(3);
+        }
         return view ('golongan.index', compact('golongan'));
     }
 
@@ -38,12 +49,14 @@ class GolonganController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $golongan=Request::all();
-        golongan::create($golongan);
-        return redirect('golongan');
-    }
+        public function store(Request $request)
+   {
+       $golongan=Request::all();
+       golongan::create($golongan);
+       return redirect('golongan');
+       }
+   
+
 
     /**
      * Display the specified resource.

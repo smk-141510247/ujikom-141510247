@@ -7,7 +7,7 @@ use App\jabatan;
 use App\pegawai;
 use App\User;
 use App\Form;
-use App\Input;
+use Input;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -65,19 +65,20 @@ class PegawaiController extends Controller
                     'password' => bcrypt($request->get('password')),
                 ]);
 
-                $file=Input::file('foto');
-                $destinationPath = public_path().'/assets/image/pegawai';
-                $filename = str_random(6).'_'.$file->getClientOriginalName();
-                $uploadsucces=$file->move($destinationPath,$filename);
-                if (Input::hasFile('foto'))
-                {
-                $pegawai = new pegawai;
-                $pegawai->nip = $request->get('nip');
-                $pegawai->id_jabatan= $request->get('id_jabatan');
-                $pegawai->id_golongan = $request->get('id_golongan');
-                $pegawai->id_user = $user->id;
-                $pegawai->foto = $filename;
-                $pegawai->save();
+        $file = Input::file('foto');
+        $destinationPath = public_path().'/assets/image/';
+        $filename = $file->getClientOriginalName();
+        $uploadSuccess = $file->move($destinationPath, $filename);
+
+        if(Input::hasFile('foto')){
+        $pegawai= new pegawai;
+        $pegawai->nip=$request->get('nip');
+        $pegawai->id_jabatan =$request->get('id_jabatan');
+        $pegawai->id_golongan=$request->get('id_golongan');
+        $pegawai->id_user =$user->id;
+        $pegawai->foto = $filename;
+        $pegawai->save();
+
                 return redirect('/pegawai');
                 }
 
@@ -103,8 +104,10 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
+         $golongan = golongan::all();
+        $jabatan = jabatan::all();
         $pegawai=pegawai::find($id);
-        return view('pegawai.edit',compact('pegawai'));
+        return view('pegawai.edit',compact('pegawai','jabatan','golongan'));
     }
 
     /**
@@ -114,11 +117,11 @@ class PegawaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $pegawaiUpdate=Request::all();
+        $pegawaiUpdate=Input::all();
         $pegawai=pegawai::find($id);
-        $pegawai->update($dataUpdate);
+        $pegawai->update($pegawaiUpdate);
         return redirect('pegawai');
     }
 

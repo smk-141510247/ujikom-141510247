@@ -13,15 +13,28 @@
                     {!! Form::label('kode_tunjangan', 'Kode Tunjangan') !!}
                     {!! Form::text('kode_tunjangan',null,['class'=>'form-control']) !!}
                 </div>
-                <div class="form-group">
-                    {!! Form::label('id_jabatan', 'Id Jabatan') !!}
-                    {!! Form::text('id_jabatan',null,['class'=>'form-control']) !!}
-                </div>
+                
+                    <div class="control-group">
+                        <label class="control-label">Id Jabatan</label>
+                        <div class="controls">
+                            <select class="span11" name="id_jabatan">
+                                @foreach ($jabatan as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_jabatan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="form-group">
-                    {!! Form::label('id_golongan', 'Id Golongan') !!}
-                    {!! Form::text('id_golongan',null,['class'=>'form-control']) !!}
-                </div>
+                    <div class="control-group">
+                        <label class="control-label">Id Golongan</label>
+                        <div class="controls">
+                            <select class="span11" name="id_golongan">
+                                @foreach ($golongan as $data)
+                                <option value="{{ $data->id }}">{{ $data->nama_golongan }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 <div class="form-group">
                     {!! Form::label('status', 'Status') !!}
                     {!! Form::text('status',null,['class'=>'form-control']) !!}
