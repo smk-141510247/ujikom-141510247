@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,18 +8,31 @@
                 <div class="panel-heading">Update</div>
 
                 <div class="panel-body">
-                    {!! Form::model($lemburpegawai,['method' => 'PATCH','route'=>['lemburpegawai.update',lemburpegawai->id]]) !!}
+                    {!! Form::model($lemburpegawai,['method' => 'PATCH','route'=>['lemburpegawai.update',$lemburpegawai->id]]) !!}
+                    
                 <div class="form-group">
-                    {!! Form::label('id_kode_lembur', ' Id Kode Lembur') !!}
-                    {!! Form::text('id_kode_lembur',null,['class'=>'form-control']) !!}
+                    <label>Id Kode Lembur</label>   
+                    <div class="controls">
+                  <select class="form-control" name="kode_lembur_id">
+                                @foreach ($kategori as $data)
+                                <option value="{{ $data->id }}">{{ $data->kode_lembur }}</option>
+                                @endforeach
+                            </select>
                 </div>
-                <div class="form-group">
-                    {!! Form::label('id_pegawai', 'Id Pegawai') !!}
-                    {!! Form::text('id_pegawai',null,['class'=>'form-control']) !!}
-                </div>
+      
+                    <div class="control-group">
+                        <label class="control-label">Id Pegawai</label>
+                        <div class="controls">
+                            <select class="span11" name="id_pegawai">
+                                @foreach ($pegawai as $data)
+                                <option value="{{ $data->id }}">{{ $data->User->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                 <div class="form-group">
-                    {!! Form::label('jumlah_jam', 'Jumlah Jam') !!}
+                    {!! Form::label('jumlah jam', 'jumlah jam') !!}
                     {!! Form::text('jumlah_jam',null,['class'=>'form-control']) !!}
                 </div>
 
