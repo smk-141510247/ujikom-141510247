@@ -14,7 +14,7 @@
                         <div class="controls">
                             <select class="form-control" name="kode_tunjangan_id">
                                 @foreach ($tunjangan as $data)
-                                <option value="{{ $data->id }}">{{ $data->tunjangan->kode_tunjangan_id }}</option>
+                                <option value="{{ $data->id }}">{{ $data->kode_tunjangan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="controls">
                             <select class="span11" name="id_user">
                                 @foreach ($pegawai as $data)
-                                <option value="{{ $data->id }}">{{ $data->user_id }}</option>
+                                <option value="{{ $data->id }}">{{ $data->user->name }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -24,4 +24,8 @@ class tunjangan_pegawai extends Model
    {
       return $this->hasMany('App\penggajian','kode_tunjangan_id');
    }
+   public function User()
+   {
+      return $this->hasMany('App\User','id_user');
+   }
 }

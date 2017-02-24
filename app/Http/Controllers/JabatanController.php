@@ -38,7 +38,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        $pegawai = pegawai::all();
+        
         $jabatan = jabatan::all();
         return view ('jabatan.create', compact('pegawai','jabatan'));
     }

@@ -51,6 +51,7 @@ class GolonganController extends Controller
      */
         public function store(Request $request)
    {
+    
        $golongan=Request::all();
        golongan::create($golongan);
        return redirect('golongan');

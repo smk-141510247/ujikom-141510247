@@ -22,14 +22,12 @@
                 <tbody>
                     <tr> 
                         <td> {{$id++}} </td>
-                        <td> {{$data->kode_tunjangan_id}} </td>
+                        <td> {{$data->tunjangan->kode_tunjangan}} </td>
                         <td> {{$data->id_user}} </td>
                         <td><a href="{{route('tunjanganpegawai.edit',$data->id)}}" class="btn btn-warning">Edit</a></td>
-                        <td>
-                        {!! Form::open(['method' => 'DELETE', 'route'=>['tunjanganpegawai.destroy', $data->id]]) !!}
-                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
-                       </td>
+                         <td ><a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
+                        @include('modals.delete', ['url' => route('tunjanganpegawai.destroy', $data->id),'model' => $data])
+                        </td>
                     </tr>
                 </tbody>
                 @endforeach

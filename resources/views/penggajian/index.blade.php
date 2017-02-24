@@ -37,9 +37,8 @@
                         <td> {{$data->status_pengembalian}} </td>
                         <td> {{$data->petugas_penerima}} </td>
                         <td><a href="{{route('penggajian.edit',$data->id)}}" class="btn btn-warning">Edit</a></td>
-                        {!! Form::open(['method' => 'DELETE', 'route'=>['penggajian.destroy', $data->id]]) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
+                         <td ><a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
+                        @include('modals.delete', ['url' => route('penggajian.destroy', $data->id),'model' => $data])
                         </td>
                          
                     </tr>
