@@ -26,7 +26,7 @@ class KategoriController extends Controller
         }
         else
         {
-            $kategori=kategori_lembur::paginate(3);
+            $kategori=kategori_lembur::paginate(2);
         }
 
         return view ('kategori.index', compact('kategori'));

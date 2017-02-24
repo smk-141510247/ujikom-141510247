@@ -17,6 +17,7 @@ class CreatePenggajiansTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('tunjangan_pegawai_id')->nullable();
             $table->foreign('tunjangan_pegawai_id')->references('id')->on('tunjangan_pegawais')->onDelete('Cascade')->onUpdate('Cascade');
+            $table->integer('jumlah_jam_lembur');
             $table->integer('jumlah_uang_lembur');
             $table->integer('gaji_pokok');
             $table->date('tanggal_pengambilan');

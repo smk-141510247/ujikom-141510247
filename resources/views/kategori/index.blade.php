@@ -42,6 +42,7 @@
                 </tbody>
                 @endforeach
             </table>
+            {{$kategori->links()}}
         </div>
     </div>
 </div>

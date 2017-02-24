@@ -7,6 +7,7 @@ use App\jabatan;
 use App\pegawai;
 use App\User;
 use App\Form;
+use App\kategori_lembur;
 use Input;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -25,6 +26,16 @@ class PegawaiController extends Controller
     {
         //
         $pegawai = pegawai::all();
+        $kategori = kategori_lembur::where('kode_lembur', request('kode_lembur'))->paginate(0);
+        if(request()->has('kode_lembur'))
+        {
+            $kategori=kategori_lembur::where('kode_lembur', request('kode_lembur'))->paginate(0);
+        }
+        else
+        {
+            $kategori=kategori_lembur::paginate(3);
+        }
+
         return view ('pegawai.index', compact('pegawai'));
        
     }

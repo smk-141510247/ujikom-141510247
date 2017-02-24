@@ -42,6 +42,7 @@
                 </tbody>
                 @endforeach
             </table>
+            {{$jabatan->links()}}
         </div>
     </div>
 </div>
