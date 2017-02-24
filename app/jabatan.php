@@ -8,8 +8,8 @@ class jabatan extends Model
 {
     //
    protected $table = 'jabatans'; 
-    protected $fillable = array('id','kode_jabatan','id_jabatan','besaran_uang');
-    protected $visible = array('id','kode_jabatan','id_jabatan','besaran_uang');
+    protected $fillable = array('id','kode_jabatan','nama_jabatan','besaran_uang');
+    protected $visible = array('id','kode_jabatan','nama_jabatan','besaran_uang');
 
     public function kategori_lembur()
     {

@@ -6,6 +6,7 @@ use Request;
 use App\tunjangan_pegawai;
 use App\pegawai;
 use App\tunjangan;
+use App\User;
 
 class TunjanganpegawaiController extends Controller
 {
@@ -17,7 +18,8 @@ class TunjanganpegawaiController extends Controller
     public function index()
     {
         $tunjanganpegawai = tunjangan_pegawai::with('tunjangan','pegawai')->get();
-        return view ('tunjanganpegawai.index', compact('tunjanganpegawai'));
+        $User = User::all();
+        return view ('tunjanganpegawai.index', compact('tunjanganpegawai','User'));
     }
 
     /**
